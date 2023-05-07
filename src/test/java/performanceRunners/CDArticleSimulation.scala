@@ -20,12 +20,21 @@ class CDArticleSimulation extends Simulation {
   val article = csv("article.csv").circular
   val tokenFeeder = Iterator.continually (Map("token" -> CreateTokens.getNextToken))
 
-  val createArticle = scenario("Create An Article").feed(article).feed(tokenFeeder).exec(karateFeature("classpath:features/performanceFeatures/createArticle.feature@load"))
+  val usersCount = System.getProperty("usersCount")
+  val duration = System.getProperty("duration")
+  val featureName = System.getProperty("featureName")
+  val tagName = System.getProperty("tagName")
+
+  val createArticle = scenario("Create An Article").feed(article).feed(tokenFeeder).exec(karateFeature("classpath:features/performanceFeatures/" + featureName + ".feature@" + tagName + ""))
 
 
   // mvn clean test-compile gatling:test -Dgatling.simulationClass=performanceRunners.CDArticleSimulation
   // mvn clean test-compile gatling:test -Dgatling.simulationClass=src.test.java.performanceRunners.CDArticleSimulation
+
   setUp(
+    createArticle.inject(rampUsers(usersCount.toInt) during Duration(duration.toInt, SECONDS)).protocols(protocol)
+  );
+ /* setUp(
     createArticle.inject(
       atOnceUsers(1), // 1 user ile simulasyon basladi
       nothingFor(4.seconds), // 4 saniye duraklama
@@ -35,7 +44,7 @@ class CDArticleSimulation extends Simulation {
       nothingFor(5.seconds), // 5 saniye duraklama
       constantUsersPerSec(1) during (5.seconds) // 5 saniye boyunca her 1 saniyede 1 user injecte edildi
     ).protocols(protocol))
-
+*/
 
   // OPEN MODEL
   //setUp(
