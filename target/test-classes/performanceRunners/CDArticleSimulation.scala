@@ -13,6 +13,7 @@ class CDArticleSimulation extends Simulation {
   val protocol = karateProtocol(
     "api/articles/{articleId}"  -> Nil
   )
+// <simulationClass>src/test/java/per</simulationClass>
 
   protocol.nameResolver = (req, ctx) => req.getHeader("karate-name")
 
@@ -23,6 +24,7 @@ class CDArticleSimulation extends Simulation {
 
 
   // mvn clean test-compile gatling:test -Dgatling.simulationClass=performanceRunners.CDArticleSimulation
+  // mvn clean test-compile gatling:test -Dgatling.simulationClass=src.test.java.performanceRunners.CDArticleSimulation
   setUp(
     createArticle.inject(
       atOnceUsers(1), // 1 user ile simulasyon basladi

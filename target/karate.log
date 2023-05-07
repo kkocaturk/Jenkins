@@ -9879,3 +9879,6 @@
 19:21:48.072 [main] INFO  i.gatling.charts.stats.LogFileReader - First pass done: read 705 lines
 19:21:48.091 [main] INFO  i.gatling.charts.stats.LogFileReader - Second pass
 19:21:48.260 [main] INFO  i.gatling.charts.stats.LogFileReader - Second pass: read 705 lines
+16:58:03.632 [main] INFO  com.intuit.karate - karate.env system property was: null 
+16:58:04.779 [main] INFO  com.intuit.karate - [print] TOKEN:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IiMoZW1haWwpIiwidXNlcm5hbWUiOiIjKHVzZXJuYW1lKSIsImlhdCI6MTY4MzQ2Nzg4NCwiZXhwIjoxNjg4NjUxODg0fQ.ZzcdpZbw2fWsBmGk8dbSzUIpedy7ihh9rrvkjIe9ZqI 
+16:58:05.249 [main] INFO  com.intuit.karate.Suite - <<pass>> feature 1 of 1 (0 remaining) src/test/java/callers/conduit/token.feature
