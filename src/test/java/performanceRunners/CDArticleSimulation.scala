@@ -13,7 +13,7 @@ class CDArticleSimulation extends Simulation {
   val protocol = karateProtocol(
     "api/articles/{articleId}"  -> Nil
   )
-// <simulationClass>src/test/java/per</simulationClass>
+  // <simulationClass>src/test/java/per</simulationClass>
 
   protocol.nameResolver = (req, ctx) => req.getHeader("karate-name")
 
@@ -25,7 +25,7 @@ class CDArticleSimulation extends Simulation {
   val featureName = System.getProperty("featureName")
   val tagName = System.getProperty("tagName")
 
-  val createArticle = scenario("Create An Article").feed(article).feed(tokenFeeder).exec(karateFeature("classpath:features/performanceFeatures/" + featureName + ".feature@" + tagName + ""))
+  val createArticle = scenario("Create An Article").feed(article).feed(tokenFeeder).exec(karateFeature("classpath:features/performanceFeatures/" +featureName +".feature@"+tagName+""))
 
 
   // mvn clean test-compile gatling:test -Dgatling.simulationClass=performanceRunners.CDArticleSimulation
@@ -34,17 +34,17 @@ class CDArticleSimulation extends Simulation {
   setUp(
     createArticle.inject(rampUsers(usersCount.toInt) during Duration(duration.toInt, SECONDS)).protocols(protocol)
   );
- /* setUp(
-    createArticle.inject(
-      atOnceUsers(1), // 1 user ile simulasyon basladi
-      nothingFor(4.seconds), // 4 saniye duraklama
-      constantUsersPerSec(1) during (10.seconds), // 10 saniye boyunca her 1 saniyede 1 user injecte edildi
-      constantUsersPerSec(2) during (10.seconds), // 10 saniye boyunca her 1 saniyede 2 user injecte edildi
-      rampUsersPerSec(2) to 12 during (20.seconds), // 2 user aninda inject edildi ve ardindan 20 sn boyunca 10 user daha duzenli inject edilecek sekilde simulasyon devam etti
-      nothingFor(5.seconds), // 5 saniye duraklama
-      constantUsersPerSec(1) during (5.seconds) // 5 saniye boyunca her 1 saniyede 1 user injecte edildi
-    ).protocols(protocol))
-*/
+  // setUp(
+  //   createArticle.inject(
+  //     atOnceUsers(1), // 1 user ile simulasyon basladi
+  //     nothingFor(4.seconds), // 4 saniye duraklama
+  //     constantUsersPerSec(1) during (10.seconds), // 10 saniye boyunca her 1 saniyede 1 user injecte edildi
+  //     constantUsersPerSec(2) during (10.seconds), // 10 saniye boyunca her 1 saniyede 2 user injecte edildi
+  //     rampUsersPerSec(2) to 12 during (20.seconds), // 2 user aninda inject edildi ve ardindan 20 sn boyunca 10 user daha duzenli inject edilecek sekilde simulasyon devam etti
+  //     nothingFor(5.seconds), // 5 saniye duraklama
+  //     constantUsersPerSec(1) during (5.seconds) // 5 saniye boyunca her 1 saniyede 1 user injecte edildi
+  //   ).protocols(protocol))
+
 
   // OPEN MODEL
   //setUp(
@@ -69,7 +69,7 @@ class CDArticleSimulation extends Simulation {
   // 10 kullanici tek seferde sisteme inject edilerek simulasyon baslar ve sonrasinda verilen surede 20 kullaniciya ulasacak sekilde 'duzenli araliklarla' kullanici inject edilmeye devam eder
   //    rampUsersPerSec(10).to(20).during(10.minutes).randomized,
   // Injects users from starting rate to target rate, defined in users per second, during a given duration. Users will be injected at randomized intervals
-  // targeta ulasana kadar inject edilecek userlar duzenli aralıklarla gonderilmez
+  // targeta ulasana kadar inject edilecek userlar duzenli aralÄ±klarla gonderilmez
   //    stressPeakUsers(1000).during(20) /
   // Injects a given number of users following a smooth approximation of the heaviside step function stretched to a given duration
   //  ).protocols(protocol)
